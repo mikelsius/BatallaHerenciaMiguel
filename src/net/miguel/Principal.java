@@ -1,9 +1,7 @@
 /**
- *
+ *.
  */
 package net.miguel;
-
-import java.awt.Color;
 
 import acm.program.GraphicsProgram;
 
@@ -20,27 +18,45 @@ public class Principal extends GraphicsProgram {
      * num soldats de cada exercit.
      */
     private static final int NUMSOLDATS = 25;
+    /**
+     * posicio inicial.
+     */
     private static final int POSICIOINICIAL = 10;
     /**
-     *
+     * Amplada de la pantalla.
      */
-    public void run() {
-        setSize(1200, 600);
-        this.setBackground(Color.cyan);;
+    private static final int AMPLADAPANTALLA = 1200;
+    /**
+     * Alçada de la pantalla.
+     */
+    private static final int ALÇADAPANTALLA = 600;
+    /**
+     * comença el programa.
+     */
+    public final void run() {
+        setSize(AMPLADAPANTALLA, ALÇADAPANTALLA);
+
         CampDeBatalla campBatalla = new CampDeBatalla(this);
 
-        Exercit exercit = creaExercit("Kennys", NUMSOLDATS,"SoldatKenny.png","SoldatKennyCoix.png");
+        Exercit exercit = creaExercit("Kennys", NUMSOLDATS, "SoldatKenny.png");
         campBatalla.afegirExercit(exercit, POSICIOINICIAL, getWidth());
 
-        exercit = creaExercit("Cartmans", NUMSOLDATS,"SoldatCartman.jpg","SoldatCartmanCoix.jpg");
-        campBatalla.afegirExercit(exercit,getWidth(),POSICIOINICIAL);
+        exercit = creaExercit("Cartmans", NUMSOLDATS, "SoldatCartman.jpg");
+        campBatalla.afegirExercit(exercit, getWidth(), POSICIOINICIAL);
 
         campBatalla.batalla();
 
 
     }
+    /**
+     *
+     * @param nom del exercit
+     * @param numSoldats numero de soldats
+     * @param imatge imatge dels soldats
+     * @return exercit senser.
+     */
     public final Exercit creaExercit(final String nom,
-            final int numSoldats, final String imatge, final String imatge2) {
+            final int numSoldats, final String imatge) {
 
         Exercit x = new Exercit(nom);
 
@@ -48,9 +64,20 @@ public class Principal extends GraphicsProgram {
             Soldat soldadet = new Soldat(imatge);
             x.allistarSoldat(soldadet);
         }
-        //proba de herencia.
-        Soldat soldadet1 = new SoldatCoix(imatge2);
-        x.allistarSoldat(soldadet1);
         return x;
+    }
+    /**
+     *
+     * @return amplada.
+     */
+    public final int getAmplada() {
+        return AMPLADAPANTALLA;
+    }
+    /**
+     *
+     * @return posicio inicial.
+     */
+    public final int getPosInicial() {
+        return POSICIOINICIAL;
     }
 }
