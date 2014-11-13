@@ -21,7 +21,7 @@ public class Soldat {
     /**
      * velocitat del soldat.
      */
-    protected static final int VELOCITAT = 10;
+    protected static int VELOCITAT = 10;
     /**
      * Random.
      */
@@ -79,5 +79,12 @@ public class Soldat {
      */
     public final GRectangle getBounds() {
         return imatge.getBounds();
+    }
+    public final int getVelocitat(){
+    	return VELOCITAT;
+    }
+    public final int setVelocitat(final int velo){
+    	VELOCITAT = velo;
+    	return VELOCITAT;
     }
 }

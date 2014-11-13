@@ -21,7 +21,7 @@ public class CampDeBatalla {
     /**
      * temps de espera entre moviments.
      */
-    private static final int TEMPSESPERA = 100;
+    private static final int TEMPSESPERA = 20;
     /**
      * files del terreny.
      */
