@@ -19,7 +19,7 @@ public class Principal extends GraphicsProgram {
     /**
      * num soldats de cada exercit.
      */
-    private static final int NUMSOLDATS = 25;
+    private static final int NUMSOLDATS = 20;
     /**
      * posicio inicial.
      */

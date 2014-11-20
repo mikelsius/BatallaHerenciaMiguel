@@ -21,7 +21,7 @@ public class CampDeBatalla {
     /**
      * temps de espera entre moviments.
      */
-    private static final int TEMPSESPERA = 50;
+    private static final int TEMPSESPERA = 10;
     /**
      * files del terreny.
      */
@@ -82,8 +82,11 @@ public class CampDeBatalla {
             pantalla.pause(TEMPSESPERA);
 
             // Comprovar si s'han de reduïr les files
-            int minim = Math.min(exercits.get(0).getNumeroDeSoldats(),
-                                 exercits.get(1).getNumeroDeSoldats());
+            //Faig el minim dels dos exercits i el comparo
+            //amb el minim de files inicial.
+            int minim = Math.min(Math.min(exercits.get(0).getNumeroDeSoldats(),
+                                 exercits.get(1).getNumeroDeSoldats())
+                                 ,filesTerreny);
             if (esmou1 == 0) {
                 //Cap es mou, ara hem de definir el nou origen i desti.
                 //i despres recolocarlos.
