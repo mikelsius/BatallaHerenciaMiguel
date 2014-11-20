@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.miguel;
 
@@ -8,8 +8,18 @@ package net.miguel;
  *
  */
 public class SoldatZombie extends Soldat {
-
-	public SoldatZombie(String im) {
-		super(im);
-	}
+    /**
+     * numero deu.
+     */
+    private final int vuit = 8;
+    /**
+     * Constructor.
+     * @param im imatge del soldat.
+     */
+    public SoldatZombie(final String im) {
+        super(im);
+        setVides(2);
+        setForça(2);
+        setVelocitat(vuit);
+    }
 }

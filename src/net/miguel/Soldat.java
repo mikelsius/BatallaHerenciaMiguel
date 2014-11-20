@@ -21,11 +21,19 @@ public class Soldat {
     /**
      * velocitat del soldat.
      */
-    protected static int VELOCITAT = 10;
+    private int velocitat = 10;
     /**
      * Random.
      */
-    protected Random rnd;
+    private Random rnd;
+    /**
+     * num de vides.
+     */
+    private int vides = 1;
+    /**
+     * quantitat de força.
+     */
+    private int força = 1;
     /**
      *
      * @param im imatge del soldat.
@@ -56,10 +64,10 @@ public class Soldat {
      * @param direccio a moure el soldat.
      * @return si es mou o no.
      */
-    public int moure(final int desti, final int direccio) {
-        if (direccio == 1 && (imatge.getX() + VELOCITAT + imatge.getWidth())
+    public final int moure(final int desti, final int direccio) {
+        if (direccio == 1 && (imatge.getX() + velocitat + imatge.getWidth())
                 > desti || direccio == -1 && (imatge.getX()
-                        - VELOCITAT) < desti) {
+                        - velocitat) < desti) {
             if (direccio == 1) {
                 imatge.setLocation(desti
                         - imatge.getWidth(), imatge.getY());
@@ -68,7 +76,7 @@ public class Soldat {
             }
             return 0;
         } else {
-            imatge.setLocation(direccio * rnd.nextInt(VELOCITAT)
+            imatge.setLocation(direccio * rnd.nextInt(velocitat)
                     + imatge.getX(), imatge.getY());
             return 1;
         }
@@ -80,11 +88,57 @@ public class Soldat {
     public final GRectangle getBounds() {
         return imatge.getBounds();
     }
-    public final int getVelocitat(){
-    	return VELOCITAT;
+    /**
+     *
+     * @return la velocitat del soldat.
+     */
+    public final int getVelocitat() {
+        return velocitat;
     }
-    public final int setVelocitat(final int velo){
-    	VELOCITAT = velo;
-    	return VELOCITAT;
+    /**
+     *
+     * @param velo nova velocitat del soldat.
+     */
+    public final void setVelocitat(final int velo) {
+        velocitat = velo;
+    }
+    /**
+     *
+     * @param vidas novas vides del soldat.
+     */
+    public final void setVides(final int vidas) {
+        vides = vidas;
+    }
+    /**
+     *
+     * @return les vides del soldat.
+     */
+    public final int getVides() {
+        return vides;
+    }
+    /**
+     *
+     * @param Força nova que tindra el soldat.
+     */
+    public final void setForça(final int Força) {
+        força = Força;
+    }
+    /**
+     *
+     * @return la força del soldat.
+     */
+    public final int getForça() {
+        return força;
+    }
+    /**
+     *
+     * @return si es mort o no.
+     */
+    public final boolean esMort() {
+        if (getVides() <= 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

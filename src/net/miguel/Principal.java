@@ -3,6 +3,8 @@
  */
 package net.miguel;
 
+import java.awt.Color;
+
 import acm.program.GraphicsProgram;
 
 /**
@@ -21,7 +23,7 @@ public class Principal extends GraphicsProgram {
     /**
      * posicio inicial.
      */
-    private static final int POSICIOINICIAL = 10;
+    private static final int POSICIOINICIAL = 0;
     /**
      * Amplada de la pantalla.
      */
@@ -35,15 +37,18 @@ public class Principal extends GraphicsProgram {
      */
     public final void run() {
         setSize(AMPLADAPANTALLA, ALÇADAPANTALLA);
-
+        setBackground(Color.CYAN);
         CampDeBatalla campBatalla = new CampDeBatalla(this);
-        
-        String[] LlistaSoldats1 = {"SoldatKenny.png","SoldatKennyAngel.jpg","SoldatKennyZombie.jpg","SoldatKennyGegant.png"};
-        String[] LlistaSoldats2 = {"SoldatCartman.jpg","SoldatCartmanDimoni.jpg","SoldatCartmanZombie.jpg","SoldatCartmanGegant.jpg"};
-        Exercit exercit = creaExercit("Kennys", NUMSOLDATS, LlistaSoldats1);
+
+        String[] llistaSoldats1 = {"SoldatKenny.png", "SoldatKennyAngel.png",
+                "SoldatKennyZombie.png", "SoldatKennyGegant.png"};
+        String[] llistaSoldats2 = {"SoldatCartman.png",
+                "SoldatCartmanDimoni.png", "SoldatCartmanZombie.png",
+                "SoldatCartmanGegant.png"};
+        Exercit exercit = creaExercit("Kennys", NUMSOLDATS, llistaSoldats1);
         campBatalla.afegirExercit(exercit, POSICIOINICIAL, getWidth());
 
-        exercit = creaExercit("Cartmans", NUMSOLDATS, LlistaSoldats2);
+        exercit = creaExercit("Cartmans", NUMSOLDATS, llistaSoldats2);
         campBatalla.afegirExercit(exercit, getWidth(), POSICIOINICIAL);
 
         campBatalla.batalla();
@@ -54,7 +59,7 @@ public class Principal extends GraphicsProgram {
      *
      * @param nom del exercit
      * @param numSoldats numero de soldats
-     * @param imatge imatge dels soldats
+     * @param imatges array de imatges dels soldats
      * @return exercit senser.
      */
     public final Exercit creaExercit(final String nom,
@@ -66,13 +71,13 @@ public class Principal extends GraphicsProgram {
             Soldat soldadet = new Soldat(imatges[0]);
             x.allistarSoldat(soldadet);
         }
-        for (int i = 0; i < 2; i++){ //2 de cada tipus.
-        	Soldat soldatEspecial = new SoldatEspecial(imatges[1]);
-        	x.allistarSoldat(soldatEspecial);
-        	Soldat soldatGegant = new SoldatGegant(imatges[3]);
-        	x.allistarSoldat(soldatGegant);
-        	Soldat soldatZombie = new SoldatZombie(imatges[2]);
-        	x.allistarSoldat(soldatZombie);
+        for (int i = 0; i < 2; i++) { //2 de cada tipus.
+            Soldat soldatEspecial = new SoldatEspecial(imatges[1]);
+            x.allistarSoldat(soldatEspecial);
+            Soldat soldatGegant = new SoldatGegant(imatges[3]);
+            x.allistarSoldat(soldatGegant);
+            Soldat soldatZombie = new SoldatZombie(imatges[2]);
+            x.allistarSoldat(soldatZombie);
         }
         return x;
     }

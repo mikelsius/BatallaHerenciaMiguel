@@ -121,7 +121,7 @@ public class Exercit {
     /**
      * calculem el desti de soldat.
      */
-    public final int calculaDesti(){
+    public final int calculaDesti() {
         int direccio = calculaDireccio();
         if (direccio == 1) {
             return 1200;
@@ -160,17 +160,21 @@ public class Exercit {
      * @param ex1 exercit enemic.
      */
     public final void atacar(final Exercit ex1) {
-        for (int i = 0; i < this.soldats.size(); i++) {
-            for (int j = 0; j < ex1.soldats.size(); j++) {
+        for (int i = this.soldats.size()-1; i >= 0; i--) {
+            for (int j = ex1.soldats.size()-1; j >= 0; j--) {
 
                 GRectangle soldat = soldats.get(i).getBounds();
                 GRectangle enemic = ex1.soldats.get(j).getBounds();
 
                 if (soldat.intersects(enemic)) {
                     //ex1.soldats.remove(j);
-                    GImage imatge = ex1.soldats.get(j).getGImage();
-                    imatge.getParent().remove(imatge);
-                    ex1.soldats.remove(j);
+                    ex1.soldats.get(j).setVides(ex1.soldats.get(j).getVides()
+                            - this.soldats.get(i).getForça());
+                    if (ex1.soldats.get(j).esMort()) {
+                        GImage imatge = ex1.soldats.get(j).getGImage();
+                        imatge.getParent().remove(imatge);
+                        ex1.soldats.remove(j);
+                    }
                 }
             }
         }

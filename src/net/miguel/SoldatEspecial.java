@@ -1,18 +1,23 @@
 /**
- * 
+ *
  */
 package net.miguel;
-
-import java.util.Random;
-
-import acm.graphics.GImage;
-
 /**
  * @author Mikel
  *
  */
 public class SoldatEspecial extends Soldat {
-    public SoldatEspecial(String im) {
-		super(im);
-	}
+    /**
+     * numero deu.
+     */
+    private final int cinc = 5;
+    /**
+     * constructor.
+     * @param im imatge d'aquest soldat.
+     */
+    public SoldatEspecial(final String im) {
+        super(im);
+        setVides(cinc);
+        setForça(cinc);
+    }
 }
